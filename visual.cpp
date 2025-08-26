@@ -1,4 +1,3 @@
-#include <SFML/Graphics.hpp>
 #include "visual.h"
 
 class Button {
@@ -11,5 +10,5 @@ public:
 class GameUI {
 public:
     sf::Window window;
-    
+
 };
