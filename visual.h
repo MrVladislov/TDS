@@ -22,9 +22,9 @@ enum class TileType {
 class tile{
 private:
     sf::RectangleShape shape;
-    sf::Texture texture;
+    sf::Texture *texture;
 public:
-    tile(int type, sf::Vector2f position);
+    tile(int type, sf::Vector2f position,sf::Texture *textur);
     void draw(sf::RenderTarget &target);
 };
 class map{
@@ -43,9 +43,11 @@ private:
         {0,1,1,3,3,1,1,1,1,3,0},
         {0,0,0,0,0,0,0,0,0,0,0}
     };
+    //std::vector<std::vector<int>> map_template{{0,0},{1,1},{2,2},{3,3},{4,4}};
     sf::Vector2f size;
+    std::vector <sf::Texture> textures;
 public:
-    map();
+    map(int ntextures=5);
     void loadMap();
     sf::Vector2f getSize() const;
     void draw(sf::RenderTarget &target);
