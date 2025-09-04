@@ -18,6 +18,8 @@ Button::Button(sf::Vector2f size, sf::Vector2f position, string text, sf::Color 
     shape.setSize(size);
     shape.setPosition(position);
     shape.setFillColor(color);
+    shape.setOutlineColor(sf::Color(255,0,0));
+    shape.setOutlineThickness(0.0f);
     this->text.setFillColor(sf::Color::Black);
     this->text.setPosition(position + sf::Vector2f(1.0f, 5.0f));
 };
@@ -26,7 +28,7 @@ void Button::draw(sf::RenderTarget &target) {
     target.draw(text);
 }
 
-GameUI::GameUI(int width, int height, string title, int balance, int health) 
+GameUI::GameUI(int width, int height, string title, int balance, int health,int tntexture,sf::Vector2i map_size) 
 : mape(), sidemenu(balance, health){
     if (!arialmt.openFromFile("arialmt.ttf")) {
         throw std::runtime_error("Failed to load font: arialmt.ttf");
@@ -36,6 +38,24 @@ GameUI::GameUI(int width, int height, string title, int balance, int health)
     window.clear(sf::Color::Red);
     pin_object();
     window.display();
+    t_textures.clear();
+    t_textures.reserve(3);
+    for(int i=0;i<tntexture;i++){
+        std::string t_filename = "assets/" + towerTypeToString(static_cast<tower_type>(i)) + ".png";
+        sf::Texture text;
+        if(!text.loadFromFile(t_filename)){
+            throw std::runtime_error("Failed to load tower textures: "+t_filename);
+        }
+        t_textures.push_back(text);
+    }
+    placed_towers.clear();
+    placed_towers.reserve(map_size.x);
+    for(int i=0;i<map_size.x;i++){
+        placed_towers[i].reserve(map_size.y);
+        for(int j=0;j<map_size.y;j++){
+            placed_towers[i][j]=-1;
+        }
+    }
 };
 void GameUI::pin_object(){
     mape.draw(window);
@@ -44,9 +64,23 @@ void GameUI::pin_object(){
 void GameUI::render(int balance, int health){
     if (!window.isOpen()) return;
     window.clear(sf::Color::Black);
-    mape.draw(window);
+    sidemenu.TowerBuy(window);
+    auto[tower_pos,tile_pos,tile_typ]=mape.PlaceTower(window);
+
+    if(tower_pos!=sf::Vector2f(-1.0f,-1.0f) && placed_towers[tile_pos.x][tile_pos.y]==-1 && tile_typ==TileType::mountain){
+        int tower_typ=sidemenu.getSelectedTower();
+        tower new_tower(static_cast<tower_type>(tower_typ),t_textures[tower_typ],tower_pos);
+        towers.push_back(new_tower);
+        //cout<<"Slurp at"<<tower_pos.x<<" "<<tower_pos.y<<endl;
+    }
+    //mape.draw(window);
     sidemenu.changeStats(balance, health);
     sidemenu.draw(window);
+    for(auto &tower:towers){
+        tower.draw(window);
+    }
+
+    cout<<"Number of towers "<<towers.size()<<endl;
     window.display();
     
 };
@@ -60,6 +94,18 @@ bool GameUI::pollEvent(){
     auto event = window.pollEvent();
     return event && event->is<sf::Event::Closed>();
 };
+bool GameUI::isButtonPressed(sf::Keyboard::Scancode button_index) const{
+    if (sf::Keyboard::isKeyPressed(button_index)) {
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+float GameUI::restartClock(){
+    sf::Time time = clock.restart();
+    return time.asSeconds();
+}
 map::map(int ntextures){
     size = sf::Vector2f(704.0f, 704.0f);
     tiles.resize(map_template.size());
@@ -90,10 +136,6 @@ void map::draw(sf::RenderTarget &target){
     for(int i=0; i<tiles.size(); i++){
         for(int j=0; j<tiles[i].size(); j++){
             tiles[i][j].draw(target);
-            // sf::RectangleShape debugRect(sf::Vector2f(64,64));
-            // debugRect.setPosition({j*64.0f+10.0f, i*64.0f+10.0f});
-            // debugRect.setFillColor(sf::Color(0,255,0,100));
-            // target.draw(debugRect);
         }
     }
 };
@@ -146,3 +188,60 @@ void menu::changeStats(int balance, int health){
     this->texts[0].setString("Balance:"+to_string(balance));
     this->texts[1].setString("Health:"+to_string(health));
 };
+sf::FloatRect Button::get_bound() const { return shape.getGlobalBounds(); }
+void menu::TowerBuy(sf::Window &target){
+    for(int i=0;i<buttons.size();i++){
+    sf::FloatRect rect=buttons[i].get_bound();
+    sf::Vector2f mouse_pos=sf::Vector2f(sf::Mouse::getPosition(target));
+    //cout<<"mouse "<<mouse_pos.x<<" "<<mouse_pos.y<<endl<<"but "<<rect.position.x<<" "<<rect.position.y<<endl;
+        if(rect.contains(mouse_pos) && sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && !mouse_clicked){
+            //cout<<"Button "<<i<<" "<<selected_button<<endl;
+            mouse_clicked=1;
+            if(selected_button!=i){
+                selected_button=i;
+                buttons[i].selected();
+                break;
+            }
+            else{
+                selected_button=-1;
+                buttons[i].unselected();
+                break;
+            }
+        }
+    }
+    if(!sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))mouse_clicked=0;
+    for(int i=0;i<buttons.size();i++){
+        if(i!=selected_button || selected_button==-1)
+            buttons[i].unselected();
+    }
+}
+void Button::selected(){
+    shape.setOutlineThickness(2.0f);
+}
+void Button::unselected(){
+    shape.setOutlineThickness(0.0f);
+}
+int menu::getSelectedTower(){
+    return selected_button;
+}
+sf::FloatRect tile::get_bound(){
+    return shape.getGlobalBounds();
+}
+std::tuple<sf::Vector2f,sf::Vector2i,TileType> map::PlaceTower(sf::Window &target){
+    if(!position_choosen){
+        for(int i=0;i<tiles.size();i++){
+            for(int j=0;j<tiles[i].size();j++){
+                sf::FloatRect tile_bound=tiles[i][j].get_bound();
+                sf::Vector2f mouse_pos=sf::Vector2f(sf::Mouse::getPosition(target));
+                if(tile_bound.contains(mouse_pos) && sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)){
+                    position_choosen=1;
+                    //cout<<"Suck "<<tile_bound.getCenter().x<<" "<<tile_bound.getCenter().y<<endl;
+                    return std::make_tuple(tile_bound.getCenter(),sf::Vector2i(i,j),static_cast<TileType>(map_template[i][j]));
+                }
+            }
+        }
+    }
+    else if(!sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))position_choosen=0;
+    return std::make_tuple(sf::Vector2f(-1.0f,-1.0f),sf::Vector2i(-1,-1),static_cast<TileType>(-1));
+}
+
