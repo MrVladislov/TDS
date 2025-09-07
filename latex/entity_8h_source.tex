@@ -1,0 +1,100 @@
+\doxysection{entity.\+h}
+\hypertarget{entity_8h_source}{}\label{entity_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ ENTITY\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ ENTITY\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\#include\ "{}visual.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classentity}{entity}}\{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00016\ \ \ \ \ sf::Sprite\ \mbox{\hyperlink{classentity_af40a4501c91b8d6c931e5c51302680d4}{shape}};}
+\DoxyCodeLine{00017\ \ \ \ \ sf::Vector2f\ \mbox{\hyperlink{classentity_a323d8e4f8a65caef297c33a74c8ce802}{position}};}
+\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{classentity}{entity}}(sf::Texture\ \&textur);}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classentity_a2ae276f35d61051c64d08ae2e71a04dc}{draw}}(sf::RenderTarget\ \&target);}
+\DoxyCodeLine{00033\ \ \ \ \ sf::Vector2f\ \mbox{\hyperlink{classentity_ae76dfa9ed69590b321e057d34f8e4b15}{get\_pos}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00034\ \};}
+\DoxyCodeLine{00038\ \textcolor{keyword}{enum}\ enemy\_type\{}
+\DoxyCodeLine{00039\ red\_slime,}
+\DoxyCodeLine{00040\ blue\_slime,}
+\DoxyCodeLine{00041\ king\_slime}
+\DoxyCodeLine{00042\ \};}
+\DoxyCodeLine{00046\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classenemy}{enemy}}:\textcolor{keyword}{public}\ \mbox{\hyperlink{classentity}{entity}}\{}
+\DoxyCodeLine{00047\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{int}\ speed;}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{int}\ health;}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{double}\ buff;}
+\DoxyCodeLine{00051\ \ \ \ \ enemy\_type\ type;}
+\DoxyCodeLine{00052\ \ \ \ \ sf::RectangleShape\ health\_bar;}
+\DoxyCodeLine{00053\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00059\ \ \ \ \ \mbox{\hyperlink{classenemy}{enemy}}(enemy\_type\ typ,sf::Texture\ \&textur);}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classenemy_a18d3f59adb9a98c824598acb963ba886}{move}}(\textcolor{keywordtype}{float}\ delta\_time,vector\ <sf::Vector2f>\ path);}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classenemy_a1999de4d3cb35cf522994a9ba5465e80}{damaged}}(\textcolor{keywordtype}{int}\ damage);}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classenemy_a3eea2ef875713132001d7dc4024b8e45}{set\_pos}}(sf::Vector2f\ spawn\_point);}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classenemy_a0b2f4cd759a701931b4e07632f889fd7}{draw}}(sf::RenderTarget\ \&target);}
+\DoxyCodeLine{00087\ \ \ \ \ enemy\_type\ \mbox{\hyperlink{classenemy_acdc668eeeeb14325c79cd735feee9d1a}{get\_type}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classenemy_afcab08445b42ff304c5f5477191bdac3}{Buff}}(\textcolor{keywordtype}{double}\ buff);}
+\DoxyCodeLine{00093\ \};}
+\DoxyCodeLine{00097\ \textcolor{keyword}{enum}\ tower\_type\{}
+\DoxyCodeLine{00098\ archer,}
+\DoxyCodeLine{00099\ mage,}
+\DoxyCodeLine{00100\ sniper}
+\DoxyCodeLine{00101\ \};}
+\DoxyCodeLine{00105\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtower}{tower}}:\textcolor{keyword}{public}\ \mbox{\hyperlink{classentity}{entity}}\{}
+\DoxyCodeLine{00106\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordtype}{int}\ damage;}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{int}\ damage\_area;}
+\DoxyCodeLine{00109\ \ \ \ \ tower\_type\ type;}
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keywordtype}{int}\ attack\_type;}
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordtype}{float}\ last\_attack;}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordtype}{double}\ attack\_speed;}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordtype}{int}\ range;}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordtype}{int}\ cost;}
+\DoxyCodeLine{00115\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00122\ \ \ \ \ \mbox{\hyperlink{classtower}{tower}}(tower\_type\ typ,sf::Texture\ \&textur,sf::Vector2f\ \mbox{\hyperlink{classentity_a323d8e4f8a65caef297c33a74c8ce802}{position}});}
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classtower_a0cbbbe207e53f0be87d97f6f8126d55e}{get\_lastattack}}(\textcolor{keywordtype}{float}\ deltaT);}
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classtower_a49511d0d9495329ae0cda8d0c45fb18d}{get\_damage}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classtower_a1fa51197a692b5f73cf87fa1f39466fb}{get\_range}}()\ \textcolor{keyword}{const};\ }
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classtower_ab7b50870625a486e5f78a5a88c379038}{get\_attackspeed}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classtower_a3b703fce061398beb9f5b296c77f0c8f}{getCost}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtower_a8b18cac779ed6c7c0a7fac03a01abebc}{set\_lastattack}}(\textcolor{keywordtype}{float}\ next\_attack);}
+\DoxyCodeLine{00158\ \ \ \ \ tower\_type\ \mbox{\hyperlink{classtower_a8e7dc5c792f8cf10a09854dd0865561c}{get\_type}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00163\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classtower_a3e8e5c076849e72ed834ceec6c9818e4}{get\_damagearea}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00164\ \};}
+\DoxyCodeLine{00168\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classwave}{wave}}\{}
+\DoxyCodeLine{00169\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00170\ \ \ \ \ vector\ <enemy>\ enemies;}
+\DoxyCodeLine{00171\ \ \ \ \ vector\ <enemy>\ new\_enemies;}
+\DoxyCodeLine{00172\ \ \ \ \ \textcolor{keywordtype}{int}\ wave\_number;}
+\DoxyCodeLine{00173\ \ \ \ \ vector\ <sf::Vector2f>\ path;}
+\DoxyCodeLine{00174\ \ \ \ \ vector\ <sf::Texture>\ enemy\_textures;}
+\DoxyCodeLine{00175\ \ \ \ \ \textcolor{keywordtype}{float}\ last\_spawn\_time;}
+\DoxyCodeLine{00176\ \ \ \ \ std::vector\ <sf::Vector2f>\ e\_path;}
+\DoxyCodeLine{00177\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00183\ \ \ \ \ \mbox{\hyperlink{classwave}{wave}}(std::vector\ <sf::Vector2f>\ path,\textcolor{keywordtype}{int}\ \mbox{\hyperlink{classwave}{wave}}=0);}
+\DoxyCodeLine{00187\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classwave_a369b2c17cf9130f6c0a627cb5a000e4c}{next\_wave}}();}
+\DoxyCodeLine{00192\ \ \ \ \ vector\ <enemy>\&\ \mbox{\hyperlink{classwave_ace4ce2e2544fcc2cd199f73934394070}{get\_enemies}}();}
+\DoxyCodeLine{00198\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classwave_ab3ceca78f852a281a089683153fb5071}{spawn\_enemies}}(\textcolor{keywordtype}{float}\ current\_time);}
+\DoxyCodeLine{00203\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classwave_a1c8f7c7435b315b204cea3791331003a}{getWave}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00208\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classwave_aea04212c6336964225a6073c1b7114ba}{getWaveLong}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00214\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classwave_a30d620736a9430976b4f417e33a743a9}{draw}}(sf::RenderTarget\ \&target,\textcolor{keywordtype}{float}\ deltaT);}
+\DoxyCodeLine{00215\ \};}
+\DoxyCodeLine{00216\ }
+\DoxyCodeLine{00222\ std::string\ enemyTypeToString(enemy\_type\ type);}
+\DoxyCodeLine{00228\ std::string\ towerTypeToString(tower\_type\ type);}
+\DoxyCodeLine{00234\ std::tuple<int,double,int,int,int>\ towerTypeToStats(tower\_type\ type);}
+\DoxyCodeLine{00240\ std::tuple<int,int>\ enemyTypeToStats(enemy\_type\ type);}
+\DoxyCodeLine{00246\ \textcolor{keywordtype}{int}\ getTowerCost(\textcolor{keywordtype}{int}\ typ);}
+\DoxyCodeLine{00252\ \textcolor{keywordtype}{float}\ sigmoidF(\textcolor{keywordtype}{int}\ x);}
+\DoxyCodeLine{00258\ \textcolor{keywordtype}{int}\ getEnemyCost(\textcolor{keywordtype}{int}\ typ);}
+\DoxyCodeLine{00264\ \textcolor{keywordtype}{int}\ getEnemyHealth(enemy\_type\ typ);}
+\DoxyCodeLine{00270\ \textcolor{keywordtype}{double}\ getTowerAttackSpeed(tower\_type\ typ);}
+\DoxyCodeLine{00271\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

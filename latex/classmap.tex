@@ -1,0 +1,81 @@
+\doxysection{map Class Reference}
+\hypertarget{classmap}{}\label{classmap}\index{map@{map}}
+
+
+Represents the game map with tiles.  
+
+
+
+
+{\ttfamily \#include $<$visual.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmap_ab9c07a2318411fca9c42c9fa296c932f}{map}} (int ntextures=5)
+\begin{DoxyCompactList}\small\item\em Constructs the map. \end{DoxyCompactList}\item 
+\Hypertarget{classmap_ada803cecd5d4e0406dc398e092cf25a2}\label{classmap_ada803cecd5d4e0406dc398e092cf25a2} 
+void {\bfseries load\+Map} ()
+\begin{DoxyCompactList}\small\item\em Loads the map with tiles and textures. \end{DoxyCompactList}\item 
+\Hypertarget{classmap_a576e29564b08d51d02f147783b87a839}\label{classmap_a576e29564b08d51d02f147783b87a839} 
+sf\+::\+Vector2f {\bfseries get\+Size} () const
+\begin{DoxyCompactList}\small\item\em Gets the size of the map. \end{DoxyCompactList}\item 
+\Hypertarget{classmap_ac908175ffae1e0c2f47f8719dd35ff3e}\label{classmap_ac908175ffae1e0c2f47f8719dd35ff3e} 
+void {\bfseries draw} (sf\+::\+Render\+Target \&target)
+\begin{DoxyCompactList}\small\item\em Draws the map on the target. \end{DoxyCompactList}\item 
+std\+::tuple$<$ sf\+::\+Vector2f, sf\+::\+Vector2i, Tile\+Type $>$ \mbox{\hyperlink{classmap_a3a04eff9c8205835f500df823311165b}{Place\+Tower}} (sf\+::\+Window \&target)
+\begin{DoxyCompactList}\small\item\em Allows placing a tower on the map. \end{DoxyCompactList}\item 
+\Hypertarget{classmap_acc3543b1c70c554e85ba7af080b29c90}\label{classmap_acc3543b1c70c554e85ba7af080b29c90} 
+std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{classtile}{tile}} $>$ $>$ {\bfseries get\+Tiles} ()
+\begin{DoxyCompactList}\small\item\em Gets all the tiles. \end{DoxyCompactList}\item 
+\Hypertarget{classmap_a9fb59bcae2faa24d610f73fed01113bf}\label{classmap_a9fb59bcae2faa24d610f73fed01113bf} 
+std\+::vector$<$ std\+::vector$<$ int $>$ $>$ {\bfseries get\+\_\+\+Tiles\+Type} () const
+\begin{DoxyCompactList}\small\item\em Gets tile types as integers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents the game map with tiles. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmap_ab9c07a2318411fca9c42c9fa296c932f}\label{classmap_ab9c07a2318411fca9c42c9fa296c932f} 
+\index{map@{map}!map@{map}}
+\index{map@{map}!map@{map}}
+\doxysubsubsection{\texorpdfstring{map()}{map()}}
+{\footnotesize\ttfamily map\+::map (\begin{DoxyParamCaption}\item[{int}]{ntextures = {\ttfamily 5} }\end{DoxyParamCaption})}
+
+
+
+Constructs the map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ntextures} & Number of textures to load. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmap_a3a04eff9c8205835f500df823311165b}\label{classmap_a3a04eff9c8205835f500df823311165b} 
+\index{map@{map}!PlaceTower@{PlaceTower}}
+\index{PlaceTower@{PlaceTower}!map@{map}}
+\doxysubsubsection{\texorpdfstring{PlaceTower()}{PlaceTower()}}
+{\footnotesize\ttfamily std\+::tuple$<$ sf\+::\+Vector2f, sf\+::\+Vector2i, Tile\+Type $>$ map\+::\+Place\+Tower (\begin{DoxyParamCaption}\item[{sf\+::\+Window \&}]{target }\end{DoxyParamCaption})}
+
+
+
+Allows placing a tower on the map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & The game window. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Tuple containing position, grid index, and tile type. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+visual.\+h\item 
+visual.\+cpp\end{DoxyCompactItemize}

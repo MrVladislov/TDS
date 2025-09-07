@@ -1,0 +1,214 @@
+\doxysection{tower Class Reference}
+\hypertarget{classtower}{}\label{classtower}\index{tower@{tower}}
+
+
+Represents a tower in the game.  
+
+
+
+
+{\ttfamily \#include $<$entity.\+h$>$}
+
+
+
+Inheritance diagram for tower\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=120pt]{classtower__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for tower\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=120pt]{classtower__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classtower_a2ff937ef3cf4b0f71559d9ed46c5aef2}{tower}} (tower\+\_\+type typ, sf\+::\+Texture \&textur, sf\+::\+Vector2f \mbox{\hyperlink{classentity_a323d8e4f8a65caef297c33a74c8ce802}{position}})
+\begin{DoxyCompactList}\small\item\em Constructs a tower. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classtower_a0cbbbe207e53f0be87d97f6f8126d55e}{get\+\_\+lastattack}} (float deltaT)
+\begin{DoxyCompactList}\small\item\em Updates and returns time until the next attack. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classtower_a49511d0d9495329ae0cda8d0c45fb18d}{get\+\_\+damage}} () const
+\begin{DoxyCompactList}\small\item\em Gets the damage dealt by the tower. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classtower_a1fa51197a692b5f73cf87fa1f39466fb}{get\+\_\+range}} () const
+\begin{DoxyCompactList}\small\item\em Gets the attack range of the tower. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classtower_ab7b50870625a486e5f78a5a88c379038}{get\+\_\+attackspeed}} () const
+\begin{DoxyCompactList}\small\item\em Gets the attack speed of the tower. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classtower_a3b703fce061398beb9f5b296c77f0c8f}{get\+Cost}} () const
+\begin{DoxyCompactList}\small\item\em Gets the cost of the tower. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classtower_a8b18cac779ed6c7c0a7fac03a01abebc}{set\+\_\+lastattack}} (float next\+\_\+attack)
+\begin{DoxyCompactList}\small\item\em Sets the cooldown for the next attack. \end{DoxyCompactList}\item 
+tower\+\_\+type \mbox{\hyperlink{classtower_a8e7dc5c792f8cf10a09854dd0865561c}{get\+\_\+type}} () const
+\begin{DoxyCompactList}\small\item\em Gets the tower type. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classtower_a3e8e5c076849e72ed834ceec6c9818e4}{get\+\_\+damagearea}} () const
+\begin{DoxyCompactList}\small\item\em Gets the area of effect for attacks. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classentity}{entity}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classentity_a9b75ccd0f0562444a5d290d35d43add9}{entity}} (sf\+::\+Texture \&textur)
+\begin{DoxyCompactList}\small\item\em Constructor for entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classentity_a2ae276f35d61051c64d08ae2e71a04dc}{draw}} (sf\+::\+Render\+Target \&target)
+\begin{DoxyCompactList}\small\item\em Draws the entity on the given target. \end{DoxyCompactList}\item 
+sf\+::\+Vector2f \mbox{\hyperlink{classentity_ae76dfa9ed69590b321e057d34f8e4b15}{get\+\_\+pos}} () const
+\begin{DoxyCompactList}\small\item\em Gets the current position of the entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classentity}{entity}}}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Sprite {\bfseries shape}
+\begin{DoxyCompactList}\small\item\em Sprite representing the entity. \end{DoxyCompactList}\item 
+sf\+::\+Vector2f {\bfseries position}
+\begin{DoxyCompactList}\small\item\em Current position of the entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a tower in the game. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classtower_a2ff937ef3cf4b0f71559d9ed46c5aef2}\label{classtower_a2ff937ef3cf4b0f71559d9ed46c5aef2} 
+\index{tower@{tower}!tower@{tower}}
+\index{tower@{tower}!tower@{tower}}
+\doxysubsubsection{\texorpdfstring{tower()}{tower()}}
+{\footnotesize\ttfamily tower\+::tower (\begin{DoxyParamCaption}\item[{tower\+\_\+type}]{typ,  }\item[{sf\+::\+Texture \&}]{textur,  }\item[{sf\+::\+Vector2f}]{position }\end{DoxyParamCaption})}
+
+
+
+Constructs a tower. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em typ} & Type of tower. \\
+\hline
+{\em textur} & Texture of the tower. \\
+\hline
+{\em position} & Position to place the tower. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classtower_ab7b50870625a486e5f78a5a88c379038}\label{classtower_ab7b50870625a486e5f78a5a88c379038} 
+\index{tower@{tower}!get\_attackspeed@{get\_attackspeed}}
+\index{get\_attackspeed@{get\_attackspeed}!tower@{tower}}
+\doxysubsubsection{\texorpdfstring{get\_attackspeed()}{get\_attackspeed()}}
+{\footnotesize\ttfamily double tower\+::get\+\_\+attackspeed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the attack speed of the tower. 
+
+\begin{DoxyReturn}{Returns}
+Attack speed (time between shots). 
+\end{DoxyReturn}
+\Hypertarget{classtower_a49511d0d9495329ae0cda8d0c45fb18d}\label{classtower_a49511d0d9495329ae0cda8d0c45fb18d} 
+\index{tower@{tower}!get\_damage@{get\_damage}}
+\index{get\_damage@{get\_damage}!tower@{tower}}
+\doxysubsubsection{\texorpdfstring{get\_damage()}{get\_damage()}}
+{\footnotesize\ttfamily int tower\+::get\+\_\+damage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the damage dealt by the tower. 
+
+\begin{DoxyReturn}{Returns}
+Damage value. 
+\end{DoxyReturn}
+\Hypertarget{classtower_a3e8e5c076849e72ed834ceec6c9818e4}\label{classtower_a3e8e5c076849e72ed834ceec6c9818e4} 
+\index{tower@{tower}!get\_damagearea@{get\_damagearea}}
+\index{get\_damagearea@{get\_damagearea}!tower@{tower}}
+\doxysubsubsection{\texorpdfstring{get\_damagearea()}{get\_damagearea()}}
+{\footnotesize\ttfamily int tower\+::get\+\_\+damagearea (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the area of effect for attacks. 
+
+\begin{DoxyReturn}{Returns}
+Area size. 
+\end{DoxyReturn}
+\Hypertarget{classtower_a0cbbbe207e53f0be87d97f6f8126d55e}\label{classtower_a0cbbbe207e53f0be87d97f6f8126d55e} 
+\index{tower@{tower}!get\_lastattack@{get\_lastattack}}
+\index{get\_lastattack@{get\_lastattack}!tower@{tower}}
+\doxysubsubsection{\texorpdfstring{get\_lastattack()}{get\_lastattack()}}
+{\footnotesize\ttfamily float tower\+::get\+\_\+lastattack (\begin{DoxyParamCaption}\item[{float}]{deltaT }\end{DoxyParamCaption})}
+
+
+
+Updates and returns time until the next attack. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em deltaT} & Time elapsed since last frame. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Updated attack cooldown time. 
+\end{DoxyReturn}
+\Hypertarget{classtower_a1fa51197a692b5f73cf87fa1f39466fb}\label{classtower_a1fa51197a692b5f73cf87fa1f39466fb} 
+\index{tower@{tower}!get\_range@{get\_range}}
+\index{get\_range@{get\_range}!tower@{tower}}
+\doxysubsubsection{\texorpdfstring{get\_range()}{get\_range()}}
+{\footnotesize\ttfamily int tower\+::get\+\_\+range (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the attack range of the tower. 
+
+\begin{DoxyReturn}{Returns}
+Range value. 
+\end{DoxyReturn}
+\Hypertarget{classtower_a8e7dc5c792f8cf10a09854dd0865561c}\label{classtower_a8e7dc5c792f8cf10a09854dd0865561c} 
+\index{tower@{tower}!get\_type@{get\_type}}
+\index{get\_type@{get\_type}!tower@{tower}}
+\doxysubsubsection{\texorpdfstring{get\_type()}{get\_type()}}
+{\footnotesize\ttfamily tower\+\_\+type tower\+::get\+\_\+type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the tower type. 
+
+\begin{DoxyReturn}{Returns}
+Tower type. 
+\end{DoxyReturn}
+\Hypertarget{classtower_a3b703fce061398beb9f5b296c77f0c8f}\label{classtower_a3b703fce061398beb9f5b296c77f0c8f} 
+\index{tower@{tower}!getCost@{getCost}}
+\index{getCost@{getCost}!tower@{tower}}
+\doxysubsubsection{\texorpdfstring{getCost()}{getCost()}}
+{\footnotesize\ttfamily int tower\+::get\+Cost (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the cost of the tower. 
+
+\begin{DoxyReturn}{Returns}
+Cost value. 
+\end{DoxyReturn}
+\Hypertarget{classtower_a8b18cac779ed6c7c0a7fac03a01abebc}\label{classtower_a8b18cac779ed6c7c0a7fac03a01abebc} 
+\index{tower@{tower}!set\_lastattack@{set\_lastattack}}
+\index{set\_lastattack@{set\_lastattack}!tower@{tower}}
+\doxysubsubsection{\texorpdfstring{set\_lastattack()}{set\_lastattack()}}
+{\footnotesize\ttfamily void tower\+::set\+\_\+lastattack (\begin{DoxyParamCaption}\item[{float}]{next\+\_\+attack }\end{DoxyParamCaption})}
+
+
+
+Sets the cooldown for the next attack. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em next\+\_\+attack} & Time until next attack. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+entity.\+h\item 
+entity.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,92 @@
+\doxysection{Button Class Reference}
+\hypertarget{class_button}{}\label{class_button}\index{Button@{Button}}
+
+
+UI \doxylink{class_button}{Button} class for the game interface.  
+
+
+
+
+{\ttfamily \#include $<$visual.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_button_aac8c521b11aaa2460cc0a265cdc085cb}{Button}} (sf\+::\+Vector2f size, sf\+::\+Vector2f position, std\+::string text, sf\+::\+Color color, sf\+::\+Font \&font)
+\begin{DoxyCompactList}\small\item\em Constructs a button. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_button_a53321604e4185fa804ba9ff9f18be9f9}{draw}} (sf\+::\+Render\+Target \&target)
+\begin{DoxyCompactList}\small\item\em Draws the button on the target. \end{DoxyCompactList}\item 
+sf\+::\+Float\+Rect \mbox{\hyperlink{class_button_a5855f295649b68ce9f0cf7fb705efc60}{get\+\_\+bound}} () const
+\begin{DoxyCompactList}\small\item\em Gets the bounding rectangle of the button. \end{DoxyCompactList}\item 
+\Hypertarget{class_button_a364070f98113a1c0cd757a336a69eb1a}\label{class_button_a364070f98113a1c0cd757a336a69eb1a} 
+void {\bfseries selected} ()
+\begin{DoxyCompactList}\small\item\em Marks the button as selected. \end{DoxyCompactList}\item 
+\Hypertarget{class_button_accab1384086dbdf6ca61db93622fc94d}\label{class_button_accab1384086dbdf6ca61db93622fc94d} 
+void {\bfseries unselected} ()
+\begin{DoxyCompactList}\small\item\em Marks the button as unselected. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+UI \doxylink{class_button}{Button} class for the game interface. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_button_aac8c521b11aaa2460cc0a265cdc085cb}\label{class_button_aac8c521b11aaa2460cc0a265cdc085cb} 
+\index{Button@{Button}!Button@{Button}}
+\index{Button@{Button}!Button@{Button}}
+\doxysubsubsection{\texorpdfstring{Button()}{Button()}}
+{\footnotesize\ttfamily Button\+::\+Button (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{size,  }\item[{sf\+::\+Vector2f}]{position,  }\item[{std\+::string}]{text,  }\item[{sf\+::\+Color}]{color,  }\item[{sf\+::\+Font \&}]{font }\end{DoxyParamCaption})}
+
+
+
+Constructs a button. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & Size of the button. \\
+\hline
+{\em position} & Position of the button. \\
+\hline
+{\em text} & Text to display on the button. \\
+\hline
+{\em color} & \doxylink{class_button}{Button} color. \\
+\hline
+{\em font} & Font used for text. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_button_a53321604e4185fa804ba9ff9f18be9f9}\label{class_button_a53321604e4185fa804ba9ff9f18be9f9} 
+\index{Button@{Button}!draw@{draw}}
+\index{draw@{draw}!Button@{Button}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Button\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Target \&}]{target }\end{DoxyParamCaption})}
+
+
+
+Draws the button on the target. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & Render target (e.\+g., window). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_button_a5855f295649b68ce9f0cf7fb705efc60}\label{class_button_a5855f295649b68ce9f0cf7fb705efc60} 
+\index{Button@{Button}!get\_bound@{get\_bound}}
+\index{get\_bound@{get\_bound}!Button@{Button}}
+\doxysubsubsection{\texorpdfstring{get\_bound()}{get\_bound()}}
+{\footnotesize\ttfamily sf\+::\+Float\+Rect Button\+::get\+\_\+bound (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the bounding rectangle of the button. 
+
+\begin{DoxyReturn}{Returns}
+The bounding rectangle as sf\+::\+Float\+Rect. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+visual.\+h\item 
+visual.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,53 @@
+\doxysection{tile Class Reference}
+\hypertarget{classtile}{}\label{classtile}\index{tile@{tile}}
+
+
+Represents a single tile on the map.  
+
+
+
+
+{\ttfamily \#include $<$visual.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classtile_afa2a6a1a866b32a8ac0624d65b8063e0}{tile}} (int type, sf\+::\+Vector2f position, sf\+::\+Texture \texorpdfstring{$\ast$}{*}textur)
+\begin{DoxyCompactList}\small\item\em Creates a tile with a given type and position. \end{DoxyCompactList}\item 
+\Hypertarget{classtile_a4c89f69a2b6cbf78a9979178c20228c1}\label{classtile_a4c89f69a2b6cbf78a9979178c20228c1} 
+void {\bfseries draw} (sf\+::\+Render\+Target \&target)
+\begin{DoxyCompactList}\small\item\em Draws the tile on the target. \end{DoxyCompactList}\item 
+\Hypertarget{classtile_a5b40a3d5b0dc8e73b617eae1e4b558d3}\label{classtile_a5b40a3d5b0dc8e73b617eae1e4b558d3} 
+sf\+::\+Float\+Rect {\bfseries get\+\_\+bound} ()
+\begin{DoxyCompactList}\small\item\em Gets the bounding rectangle of the tile. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a single tile on the map. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classtile_afa2a6a1a866b32a8ac0624d65b8063e0}\label{classtile_afa2a6a1a866b32a8ac0624d65b8063e0} 
+\index{tile@{tile}!tile@{tile}}
+\index{tile@{tile}!tile@{tile}}
+\doxysubsubsection{\texorpdfstring{tile()}{tile()}}
+{\footnotesize\ttfamily tile\+::tile (\begin{DoxyParamCaption}\item[{int}]{type,  }\item[{sf\+::\+Vector2f}]{position,  }\item[{sf\+::\+Texture \texorpdfstring{$\ast$}{*}}]{textur }\end{DoxyParamCaption})}
+
+
+
+Creates a tile with a given type and position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & Tile type. \\
+\hline
+{\em position} & Tile position. \\
+\hline
+{\em textur} & Pointer to the texture for the tile. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+visual.\+h\item 
+visual.\+cpp\end{DoxyCompactItemize}

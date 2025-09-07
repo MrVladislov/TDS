@@ -1,0 +1,193 @@
+\doxysection{enemy Class Reference}
+\hypertarget{classenemy}{}\label{classenemy}\index{enemy@{enemy}}
+
+
+Represents an enemy in the game.  
+
+
+
+
+{\ttfamily \#include $<$entity.\+h$>$}
+
+
+
+Inheritance diagram for enemy\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=125pt]{classenemy__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for enemy\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=125pt]{classenemy__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classenemy_a18b6a501be2af10d1d62a171595122a4}{enemy}} (enemy\+\_\+type typ, sf\+::\+Texture \&textur)
+\begin{DoxyCompactList}\small\item\em Constructs an enemy of a specific type with a given texture. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classenemy_a18d3f59adb9a98c824598acb963ba886}{move}} (float delta\+\_\+time, vector$<$ sf\+::\+Vector2f $>$ path)
+\begin{DoxyCompactList}\small\item\em Moves the enemy along the given path. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classenemy_a1999de4d3cb35cf522994a9ba5465e80}{damaged}} (int damage)
+\begin{DoxyCompactList}\small\item\em Reduces enemy health by the given damage amount. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classenemy_a3eea2ef875713132001d7dc4024b8e45}{set\+\_\+pos}} (sf\+::\+Vector2f spawn\+\_\+point)
+\begin{DoxyCompactList}\small\item\em Sets enemy position to the given point (used for spawning). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classenemy_a0b2f4cd759a701931b4e07632f889fd7}{draw}} (sf\+::\+Render\+Target \&target)
+\begin{DoxyCompactList}\small\item\em Draws the enemy and its health bar. \end{DoxyCompactList}\item 
+enemy\+\_\+type \mbox{\hyperlink{classenemy_acdc668eeeeb14325c79cd735feee9d1a}{get\+\_\+type}} () const
+\begin{DoxyCompactList}\small\item\em Gets the enemy type. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classenemy_afcab08445b42ff304c5f5477191bdac3}{Buff}} (double buff)
+\begin{DoxyCompactList}\small\item\em Applies a buff to the enemy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classentity}{entity}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classentity_a9b75ccd0f0562444a5d290d35d43add9}{entity}} (sf\+::\+Texture \&textur)
+\begin{DoxyCompactList}\small\item\em Constructor for entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classentity_a2ae276f35d61051c64d08ae2e71a04dc}{draw}} (sf\+::\+Render\+Target \&target)
+\begin{DoxyCompactList}\small\item\em Draws the entity on the given target. \end{DoxyCompactList}\item 
+sf\+::\+Vector2f \mbox{\hyperlink{classentity_ae76dfa9ed69590b321e057d34f8e4b15}{get\+\_\+pos}} () const
+\begin{DoxyCompactList}\small\item\em Gets the current position of the entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classentity}{entity}}}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Sprite {\bfseries shape}
+\begin{DoxyCompactList}\small\item\em Sprite representing the entity. \end{DoxyCompactList}\item 
+sf\+::\+Vector2f {\bfseries position}
+\begin{DoxyCompactList}\small\item\em Current position of the entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents an enemy in the game. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classenemy_a18b6a501be2af10d1d62a171595122a4}\label{classenemy_a18b6a501be2af10d1d62a171595122a4} 
+\index{enemy@{enemy}!enemy@{enemy}}
+\index{enemy@{enemy}!enemy@{enemy}}
+\doxysubsubsection{\texorpdfstring{enemy()}{enemy()}}
+{\footnotesize\ttfamily enemy\+::enemy (\begin{DoxyParamCaption}\item[{enemy\+\_\+type}]{typ,  }\item[{sf\+::\+Texture \&}]{textur }\end{DoxyParamCaption})}
+
+
+
+Constructs an enemy of a specific type with a given texture. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em typ} & Enemy type. \\
+\hline
+{\em textur} & Texture for the enemy sprite. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classenemy_afcab08445b42ff304c5f5477191bdac3}\label{classenemy_afcab08445b42ff304c5f5477191bdac3} 
+\index{enemy@{enemy}!Buff@{Buff}}
+\index{Buff@{Buff}!enemy@{enemy}}
+\doxysubsubsection{\texorpdfstring{Buff()}{Buff()}}
+{\footnotesize\ttfamily void enemy\+::\+Buff (\begin{DoxyParamCaption}\item[{double}]{buff }\end{DoxyParamCaption})}
+
+
+
+Applies a buff to the enemy. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buff} & Buff multiplier (e.\+g., 1.\+2 = +20\%). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classenemy_a1999de4d3cb35cf522994a9ba5465e80}\label{classenemy_a1999de4d3cb35cf522994a9ba5465e80} 
+\index{enemy@{enemy}!damaged@{damaged}}
+\index{damaged@{damaged}!enemy@{enemy}}
+\doxysubsubsection{\texorpdfstring{damaged()}{damaged()}}
+{\footnotesize\ttfamily bool enemy\+::damaged (\begin{DoxyParamCaption}\item[{int}]{damage }\end{DoxyParamCaption})}
+
+
+
+Reduces enemy health by the given damage amount. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em damage} & Damage to apply. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if enemy is dead (health \texorpdfstring{$<$}{<}= 0), false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{classenemy_a0b2f4cd759a701931b4e07632f889fd7}\label{classenemy_a0b2f4cd759a701931b4e07632f889fd7} 
+\index{enemy@{enemy}!draw@{draw}}
+\index{draw@{draw}!enemy@{enemy}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily bool enemy\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Target \&}]{target }\end{DoxyParamCaption})}
+
+
+
+Draws the enemy and its health bar. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & Render target (e.\+g., window). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if successfully drawn. 
+\end{DoxyReturn}
+\Hypertarget{classenemy_acdc668eeeeb14325c79cd735feee9d1a}\label{classenemy_acdc668eeeeb14325c79cd735feee9d1a} 
+\index{enemy@{enemy}!get\_type@{get\_type}}
+\index{get\_type@{get\_type}!enemy@{enemy}}
+\doxysubsubsection{\texorpdfstring{get\_type()}{get\_type()}}
+{\footnotesize\ttfamily enemy\+\_\+type enemy\+::get\+\_\+type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the enemy type. 
+
+\begin{DoxyReturn}{Returns}
+Enemy type. 
+\end{DoxyReturn}
+\Hypertarget{classenemy_a18d3f59adb9a98c824598acb963ba886}\label{classenemy_a18d3f59adb9a98c824598acb963ba886} 
+\index{enemy@{enemy}!move@{move}}
+\index{move@{move}!enemy@{enemy}}
+\doxysubsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily void enemy\+::move (\begin{DoxyParamCaption}\item[{float}]{delta\+\_\+time,  }\item[{vector$<$ sf\+::\+Vector2f $>$}]{path }\end{DoxyParamCaption})}
+
+
+
+Moves the enemy along the given path. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta\+\_\+time} & Time elapsed since last frame. \\
+\hline
+{\em path} & Path points for the enemy to follow. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classenemy_a3eea2ef875713132001d7dc4024b8e45}\label{classenemy_a3eea2ef875713132001d7dc4024b8e45} 
+\index{enemy@{enemy}!set\_pos@{set\_pos}}
+\index{set\_pos@{set\_pos}!enemy@{enemy}}
+\doxysubsubsection{\texorpdfstring{set\_pos()}{set\_pos()}}
+{\footnotesize\ttfamily void enemy\+::set\+\_\+pos (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{spawn\+\_\+point }\end{DoxyParamCaption})}
+
+
+
+Sets enemy position to the given point (used for spawning). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em spawn\+\_\+point} & Position where the enemy should be placed. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+entity.\+h\item 
+entity.\+cpp\end{DoxyCompactItemize}

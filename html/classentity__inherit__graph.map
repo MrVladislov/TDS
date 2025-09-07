@@ -1,0 +1,7 @@
+<map id="entity" name="entity">
+<area shape="rect" id="Node000001" title="Base class for all entities (towers and enemies)." alt="" coords="49,5,102,32"/>
+<area shape="rect" id="Node000002" href="$classenemy.html" title="Represents an enemy in the game." alt="" coords="5,80,66,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="64,46,45,81,40,78,59,44"/>
+<area shape="rect" id="Node000003" href="$classtower.html" title="Represents a tower in the game." alt="" coords="89,80,142,107"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="92,44,111,78,106,81,87,46"/>
+</map>

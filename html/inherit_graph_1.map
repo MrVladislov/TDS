@@ -1,0 +1,7 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$classentity.html" title="Base class for all entities (towers and enemies)." alt="" coords="5,31,59,57"/>
+<area shape="rect" id="Node000001" href="$classenemy.html" title="Represents an enemy in the game." alt="" coords="107,5,167,32"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="72,32,105,23,107,29,74,37"/>
+<area shape="rect" id="Node000002" href="$classtower.html" title="Represents a tower in the game." alt="" coords="111,56,163,83"/>
+<area shape="poly" id="edge2_Node000000_Node000002" title=" " alt="" coords="74,51,111,60,109,66,72,56"/>
+</map>

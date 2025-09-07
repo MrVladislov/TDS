@@ -1,0 +1,167 @@
+\doxysection{Game\+UI Class Reference}
+\hypertarget{class_game_u_i}{}\label{class_game_u_i}\index{GameUI@{GameUI}}
+
+
+Main Game UI class, responsible for rendering and game loop.  
+
+
+
+
+{\ttfamily \#include $<$visual.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_game_u_i_a06b89933e71cd3802f5987f8d4bb5a10}{Game\+UI}} (int width, int height, std\+::string title, int balance, int health, std\+::vector$<$ sf\+::\+Vector2f $>$ path, int tntexture=3, sf\+::\+Vector2i map\+\_\+size=sf\+::\+Vector2i(11, 11))
+\begin{DoxyCompactList}\small\item\em Constructs the Game UI. \end{DoxyCompactList}\item 
+\Hypertarget{class_game_u_i_aebbe693f8161d23f0f647f3899d6637e}\label{class_game_u_i_aebbe693f8161d23f0f647f3899d6637e} 
+void {\bfseries pin\+\_\+object} ()
+\begin{DoxyCompactList}\small\item\em Places static objects (map, menu) on the window. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_u_i_afb9b2f8151251966f6fd4f7bcc927f8c}{render}} (int \&Balance, int \&Health, float deltaT)
+\begin{DoxyCompactList}\small\item\em Renders the game UI. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_game_u_i_a28ae223c342fdac1401a937ffc18543e}{is\+Open}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the window is open. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_game_u_i_aff1e8bb112d508b4c6b5b80cf53f3294}{poll\+Event}} ()
+\begin{DoxyCompactList}\small\item\em Polls window events. \end{DoxyCompactList}\item 
+\Hypertarget{class_game_u_i_a9cdc1d1f2438bd7d3fd6638c52799490}\label{class_game_u_i_a9cdc1d1f2438bd7d3fd6638c52799490} 
+void {\bfseries close} ()
+\begin{DoxyCompactList}\small\item\em Closes the window. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_game_u_i_a322cf671a6a6cad139ccbb0e4205c23e}{is\+Button\+Pressed}} (sf\+::\+Keyboard\+::\+Scancode button\+\_\+index) const
+\begin{DoxyCompactList}\small\item\em Checks if a keyboard button is pressed. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_game_u_i_a7797b3067d302b0faf82e0a3e4214ecc}{restart\+Clock}} ()
+\begin{DoxyCompactList}\small\item\em Restarts the game clock and returns elapsed time. \end{DoxyCompactList}\item 
+tuple$<$ vector$<$ \mbox{\hyperlink{classenemy}{enemy}} $>$ \&, vector$<$ \mbox{\hyperlink{classtower}{tower}} $>$ \& $>$ \mbox{\hyperlink{class_game_u_i_a297e1c4c7227541e55d5e4865f1cf546}{get\+\_\+entities}} ()
+\begin{DoxyCompactList}\small\item\em Gets references to enemies and towers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Main Game UI class, responsible for rendering and game loop. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_game_u_i_a06b89933e71cd3802f5987f8d4bb5a10}\label{class_game_u_i_a06b89933e71cd3802f5987f8d4bb5a10} 
+\index{GameUI@{GameUI}!GameUI@{GameUI}}
+\index{GameUI@{GameUI}!GameUI@{GameUI}}
+\doxysubsubsection{\texorpdfstring{GameUI()}{GameUI()}}
+{\footnotesize\ttfamily Game\+UI\+::\+Game\+UI (\begin{DoxyParamCaption}\item[{int}]{width,  }\item[{int}]{height,  }\item[{std\+::string}]{title,  }\item[{int}]{balance,  }\item[{int}]{health,  }\item[{std\+::vector$<$ sf\+::\+Vector2f $>$}]{path,  }\item[{int}]{tntexture = {\ttfamily 3},  }\item[{sf\+::\+Vector2i}]{map\+\_\+size = {\ttfamily sf\+:\+:Vector2i(11,11)} }\end{DoxyParamCaption})}
+
+
+
+Constructs the Game UI. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & Window width. \\
+\hline
+{\em height} & Window height. \\
+\hline
+{\em title} & Window title. \\
+\hline
+{\em balance} & Player\textquotesingle{}s starting balance. \\
+\hline
+{\em health} & Player\textquotesingle{}s starting health. \\
+\hline
+{\em path} & Path for enemy movement. \\
+\hline
+{\em tntexture} & Number of tower textures. \\
+\hline
+{\em map\+\_\+size} & Map size in grid coordinates. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_game_u_i_a297e1c4c7227541e55d5e4865f1cf546}\label{class_game_u_i_a297e1c4c7227541e55d5e4865f1cf546} 
+\index{GameUI@{GameUI}!get\_entities@{get\_entities}}
+\index{get\_entities@{get\_entities}!GameUI@{GameUI}}
+\doxysubsubsection{\texorpdfstring{get\_entities()}{get\_entities()}}
+{\footnotesize\ttfamily tuple$<$ vector$<$ \mbox{\hyperlink{classenemy}{enemy}} $>$ \&, vector$<$ \mbox{\hyperlink{classtower}{tower}} $>$ \& $>$ Game\+UI\+::get\+\_\+entities (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets references to enemies and towers. 
+
+\begin{DoxyReturn}{Returns}
+Tuple of vectors (enemies, towers). 
+\end{DoxyReturn}
+\Hypertarget{class_game_u_i_a322cf671a6a6cad139ccbb0e4205c23e}\label{class_game_u_i_a322cf671a6a6cad139ccbb0e4205c23e} 
+\index{GameUI@{GameUI}!isButtonPressed@{isButtonPressed}}
+\index{isButtonPressed@{isButtonPressed}!GameUI@{GameUI}}
+\doxysubsubsection{\texorpdfstring{isButtonPressed()}{isButtonPressed()}}
+{\footnotesize\ttfamily bool Game\+UI\+::is\+Button\+Pressed (\begin{DoxyParamCaption}\item[{sf\+::\+Keyboard\+::\+Scancode}]{button\+\_\+index }\end{DoxyParamCaption}) const}
+
+
+
+Checks if a keyboard button is pressed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em button\+\_\+index} & \doxylink{class_button}{Button} scancode. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if pressed, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_game_u_i_a28ae223c342fdac1401a937ffc18543e}\label{class_game_u_i_a28ae223c342fdac1401a937ffc18543e} 
+\index{GameUI@{GameUI}!isOpen@{isOpen}}
+\index{isOpen@{isOpen}!GameUI@{GameUI}}
+\doxysubsubsection{\texorpdfstring{isOpen()}{isOpen()}}
+{\footnotesize\ttfamily bool Game\+UI\+::is\+Open (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Checks if the window is open. 
+
+\begin{DoxyReturn}{Returns}
+True if the window is open. 
+\end{DoxyReturn}
+\Hypertarget{class_game_u_i_aff1e8bb112d508b4c6b5b80cf53f3294}\label{class_game_u_i_aff1e8bb112d508b4c6b5b80cf53f3294} 
+\index{GameUI@{GameUI}!pollEvent@{pollEvent}}
+\index{pollEvent@{pollEvent}!GameUI@{GameUI}}
+\doxysubsubsection{\texorpdfstring{pollEvent()}{pollEvent()}}
+{\footnotesize\ttfamily bool Game\+UI\+::poll\+Event (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Polls window events. 
+
+\begin{DoxyReturn}{Returns}
+True if an event occurred. 
+\end{DoxyReturn}
+\Hypertarget{class_game_u_i_afb9b2f8151251966f6fd4f7bcc927f8c}\label{class_game_u_i_afb9b2f8151251966f6fd4f7bcc927f8c} 
+\index{GameUI@{GameUI}!render@{render}}
+\index{render@{render}!GameUI@{GameUI}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily void Game\+UI\+::render (\begin{DoxyParamCaption}\item[{int \&}]{Balance,  }\item[{int \&}]{Health,  }\item[{float}]{deltaT }\end{DoxyParamCaption})}
+
+
+
+Renders the game UI. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Balance} & Player balance reference. \\
+\hline
+{\em Health} & Player health reference. \\
+\hline
+{\em deltaT} & Time delta since last frame. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_game_u_i_a7797b3067d302b0faf82e0a3e4214ecc}\label{class_game_u_i_a7797b3067d302b0faf82e0a3e4214ecc} 
+\index{GameUI@{GameUI}!restartClock@{restartClock}}
+\index{restartClock@{restartClock}!GameUI@{GameUI}}
+\doxysubsubsection{\texorpdfstring{restartClock()}{restartClock()}}
+{\footnotesize\ttfamily float Game\+UI\+::restart\+Clock (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Restarts the game clock and returns elapsed time. 
+
+\begin{DoxyReturn}{Returns}
+Time elapsed since last restart (last frame). 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+visual.\+h\item 
+visual.\+cpp\end{DoxyCompactItemize}

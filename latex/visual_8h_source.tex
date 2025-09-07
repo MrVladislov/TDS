@@ -1,0 +1,109 @@
+\doxysection{visual.\+h}
+\hypertarget{visual_8h_source}{}\label{visual_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ VISUAL\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ VISUAL\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}entity.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_button}{Button}}\{}
+\DoxyCodeLine{00012\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00013\ \ \ \ \ sf::RectangleShape\ shape;}
+\DoxyCodeLine{00014\ \ \ \ \ sf::Text\ text;}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{class_button}{Button}}(sf::Vector2f\ size,\ sf::Vector2f\ position,\ std::string\ text,\ sf::Color\ color,sf::Font\ \&font);}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_button_a53321604e4185fa804ba9ff9f18be9f9}{draw}}(sf::RenderTarget\ \&target);}
+\DoxyCodeLine{00034\ \ \ \ \ sf::FloatRect\ \mbox{\hyperlink{class_button_a5855f295649b68ce9f0cf7fb705efc60}{get\_bound}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_button_a364070f98113a1c0cd757a336a69eb1a}{selected}}();}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_button_accab1384086dbdf6ca61db93622fc94d}{unselected}}();}
+\DoxyCodeLine{00043\ \};}
+\DoxyCodeLine{00047\ \textcolor{keyword}{enum\ class}\ TileType\ \{\ }
+\DoxyCodeLine{00048\ \ \ \ \ mountain,\ }
+\DoxyCodeLine{00049\ \ \ \ \ grass,\ }
+\DoxyCodeLine{00050\ \ \ \ \ swamp,}
+\DoxyCodeLine{00051\ \ \ \ \ stairs,}
+\DoxyCodeLine{00052\ \ \ \ \ castle}
+\DoxyCodeLine{00053\ \};}
+\DoxyCodeLine{00057\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtile}{tile}}\{}
+\DoxyCodeLine{00058\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00059\ \ \ \ \ sf::RectangleShape\ shape;}
+\DoxyCodeLine{00060\ \ \ \ \ sf::Texture\ *texture;}
+\DoxyCodeLine{00061\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00068\ \ \ \ \ \mbox{\hyperlink{classtile}{tile}}(\textcolor{keywordtype}{int}\ type,\ sf::Vector2f\ position,sf::Texture\ *textur);}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtile_a4c89f69a2b6cbf78a9979178c20228c1}{draw}}(sf::RenderTarget\ \&target);}
+\DoxyCodeLine{00076\ \ \ \ \ sf::FloatRect\ \mbox{\hyperlink{classtile_a5b40a3d5b0dc8e73b617eae1e4b558d3}{get\_bound}}();}
+\DoxyCodeLine{00077\ \};}
+\DoxyCodeLine{00081\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classmap}{map}}\{}
+\DoxyCodeLine{00082\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00083\ \ \ \ \ std::vector<std::vector<tile>>\ tiles;}
+\DoxyCodeLine{00084\ \ \ \ \ std::vector<std::vector<int>>\ map\_template\{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \{0,0,0,0,0,0,0,0,0,0,0\},}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \{1,1,1,1,3,3,1,1,1,2,0\},}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \{0,0,0,0,0,0,0,0,0,1,0\},}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \{0,1,1,1,2,1,1,1,0,1,0\},}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \{0,1,0,0,0,0,0,1,0,1,0\},}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \{0,1,0,3,3,4,0,1,0,2,0\},}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \{0,1,0,2,0,0,0,2,0,1,0\},}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \{0,1,0,1,1,1,1,1,0,1,0\},}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \{0,1,0,0,0,0,0,0,0,1,0\},}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \{0,1,1,3,3,1,1,1,1,3,0\},}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \{0,0,0,0,0,0,0,0,0,0,0\}}
+\DoxyCodeLine{00096\ \ \ \ \ \};}
+\DoxyCodeLine{00097\ \ \ \ \ sf::Vector2f\ size;}
+\DoxyCodeLine{00098\ \ \ \ \ std::vector\ <sf::Texture>\ textures;}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{bool}\ position\_choosen=0;}
+\DoxyCodeLine{00100\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00105\ \ \ \ \ \mbox{\hyperlink{classmap}{map}}(\textcolor{keywordtype}{int}\ ntextures=5);}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classmap_ada803cecd5d4e0406dc398e092cf25a2}{loadMap}}();}
+\DoxyCodeLine{00113\ \ \ \ \ sf::Vector2f\ \mbox{\hyperlink{classmap_a576e29564b08d51d02f147783b87a839}{getSize}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classmap_ac908175ffae1e0c2f47f8719dd35ff3e}{draw}}(sf::RenderTarget\ \&target);}
+\DoxyCodeLine{00123\ \ \ \ \ std::tuple<sf::Vector2f,sf::Vector2i,TileType>\ \mbox{\hyperlink{classmap_a3a04eff9c8205835f500df823311165b}{PlaceTower}}(sf::Window\ \&target);\ }
+\DoxyCodeLine{00127\ \ \ \ \ std::vector\ <std::vector<tile>>\ \mbox{\hyperlink{classmap_acc3543b1c70c554e85ba7af080b29c90}{getTiles}}();}
+\DoxyCodeLine{00131\ \ \ \ \ std::vector<std::vector<int>>\ \mbox{\hyperlink{classmap_a9fb59bcae2faa24d610f73fed01113bf}{get\_TilesType}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00132\ \};}
+\DoxyCodeLine{00136\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classmenu}{menu}}\{}
+\DoxyCodeLine{00137\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00138\ \ \ \ \ std::vector<Button>\ buttons;}
+\DoxyCodeLine{00139\ \ \ \ \ std::vector<sf::Text>\ texts;}
+\DoxyCodeLine{00140\ \ \ \ \ sf::RectangleShape\ background;}
+\DoxyCodeLine{00141\ \ \ \ \ sf::Font\ arialmt;}
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keywordtype}{int}\ selected\_button=-\/1;}
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keywordtype}{bool}\ mouse\_clicked=\textcolor{keyword}{false};}
+\DoxyCodeLine{00144\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00151\ \ \ \ \ \mbox{\hyperlink{classmenu}{menu}}(\textcolor{keywordtype}{int}\ balance,\textcolor{keywordtype}{int}\ health,\textcolor{keywordtype}{int}\ waves=0);}
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classmenu_a42bb4f2dc0e8c02cebce5a0d4e619b19}{draw}}(sf::RenderTarget\ \&target);}
+\DoxyCodeLine{00163\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classmenu_aa36d856ce494d188ee173d7309ac4bbb}{changeStats}}(\textcolor{keywordtype}{int}\ balance,\textcolor{keywordtype}{int}\ health,\textcolor{keywordtype}{int}\ waves);}
+\DoxyCodeLine{00168\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classmenu_a7449170b089a699da635a352f45b5c03}{TowerBuy}}(sf::Window\ \&target);}
+\DoxyCodeLine{00173\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classmenu_af3478dad666a32283223c8738a5ecfa5}{getSelectedTower}}();}
+\DoxyCodeLine{00174\ \};}
+\DoxyCodeLine{00178\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_game_u_i}{GameUI}}\{}
+\DoxyCodeLine{00179\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00180\ \ \ \ \ sf::RenderWindow\ window;}
+\DoxyCodeLine{00181\ \ \ \ \ \mbox{\hyperlink{classmap}{map}}\ mape;}
+\DoxyCodeLine{00182\ \ \ \ \ \mbox{\hyperlink{classmenu}{menu}}\ sidemenu;}
+\DoxyCodeLine{00183\ \ \ \ \ sf::Font\ arialmt;}
+\DoxyCodeLine{00184\ \ \ \ \ sf::Clock\ clock;}
+\DoxyCodeLine{00185\ \ \ \ \ std::vector\ <tower>\ towers;}
+\DoxyCodeLine{00186\ \ \ \ \ \mbox{\hyperlink{classwave}{wave}}\ waves;}
+\DoxyCodeLine{00187\ \ \ \ \ std::vector\ <sf::Texture>\ t\_textures;}
+\DoxyCodeLine{00188\ \ \ \ \ std::vector\ <std::vector<int>>\ placed\_towers;}
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{keywordtype}{float}\ next\_wave;}
+\DoxyCodeLine{00190\ \ \ \ \ \textcolor{keywordtype}{int}\ numbers\_of\_tower;}
+\DoxyCodeLine{00191\ \ \ \ \ \textcolor{keywordtype}{int}\ wave\_n;}
+\DoxyCodeLine{00192\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00204\ \ \ \ \ \mbox{\hyperlink{class_game_u_i}{GameUI}}(\textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height,\ std::string\ title,\ \textcolor{keywordtype}{int}\ balance,\ \textcolor{keywordtype}{int}\ health,std::vector\ <sf::Vector2f>\ path,\textcolor{keywordtype}{int}\ tntexture=3,}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ sf::Vector2i\ map\_size=sf::Vector2i(11,11));}
+\DoxyCodeLine{00209\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_u_i_aebbe693f8161d23f0f647f3899d6637e}{pin\_object}}();}
+\DoxyCodeLine{00216\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_u_i_afb9b2f8151251966f6fd4f7bcc927f8c}{render}}(\textcolor{keywordtype}{int}\ \&Balance,\textcolor{keywordtype}{int}\ \&Health,\textcolor{keywordtype}{float}\ deltaT);}
+\DoxyCodeLine{00221\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_game_u_i_a28ae223c342fdac1401a937ffc18543e}{isOpen}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00226\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_game_u_i_aff1e8bb112d508b4c6b5b80cf53f3294}{pollEvent}}();}
+\DoxyCodeLine{00230\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_u_i_a9cdc1d1f2438bd7d3fd6638c52799490}{close}}();}
+\DoxyCodeLine{00236\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_game_u_i_a322cf671a6a6cad139ccbb0e4205c23e}{isButtonPressed}}(sf::Keyboard::Scancode\ button\_index)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00241\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_game_u_i_a7797b3067d302b0faf82e0a3e4214ecc}{restartClock}}();}
+\DoxyCodeLine{00246\ \ \ \ \ tuple\ <vector<enemy>\&,vector<tower>\&>\ \mbox{\hyperlink{class_game_u_i_a297e1c4c7227541e55d5e4865f1cf546}{get\_entities}}();}
+\DoxyCodeLine{00247\ \};}
+\DoxyCodeLine{00248\ \textcolor{preprocessor}{\#endif\ }}
+
+\end{DoxyCode}

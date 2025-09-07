@@ -1,0 +1,97 @@
+\doxysection{entity Class Reference}
+\hypertarget{classentity}{}\label{classentity}\index{entity@{entity}}
+
+
+Base class for all entities (towers and enemies).  
+
+
+
+
+{\ttfamily \#include $<$entity.\+h$>$}
+
+
+
+Inheritance diagram for entity\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=182pt]{classentity__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classentity_a9b75ccd0f0562444a5d290d35d43add9}{entity}} (sf\+::\+Texture \&textur)
+\begin{DoxyCompactList}\small\item\em Constructor for entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classentity_a2ae276f35d61051c64d08ae2e71a04dc}{draw}} (sf\+::\+Render\+Target \&target)
+\begin{DoxyCompactList}\small\item\em Draws the entity on the given target. \end{DoxyCompactList}\item 
+sf\+::\+Vector2f \mbox{\hyperlink{classentity_ae76dfa9ed69590b321e057d34f8e4b15}{get\+\_\+pos}} () const
+\begin{DoxyCompactList}\small\item\em Gets the current position of the entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classentity_af40a4501c91b8d6c931e5c51302680d4}\label{classentity_af40a4501c91b8d6c931e5c51302680d4} 
+sf\+::\+Sprite {\bfseries shape}
+\begin{DoxyCompactList}\small\item\em Sprite representing the entity. \end{DoxyCompactList}\item 
+\Hypertarget{classentity_a323d8e4f8a65caef297c33a74c8ce802}\label{classentity_a323d8e4f8a65caef297c33a74c8ce802} 
+sf\+::\+Vector2f {\bfseries position}
+\begin{DoxyCompactList}\small\item\em Current position of the entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Base class for all entities (towers and enemies). 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classentity_a9b75ccd0f0562444a5d290d35d43add9}\label{classentity_a9b75ccd0f0562444a5d290d35d43add9} 
+\index{entity@{entity}!entity@{entity}}
+\index{entity@{entity}!entity@{entity}}
+\doxysubsubsection{\texorpdfstring{entity()}{entity()}}
+{\footnotesize\ttfamily entity\+::entity (\begin{DoxyParamCaption}\item[{sf\+::\+Texture \&}]{textur }\end{DoxyParamCaption})}
+
+
+
+Constructor for entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em textur} & Reference to texture to apply to the entity. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classentity_a2ae276f35d61051c64d08ae2e71a04dc}\label{classentity_a2ae276f35d61051c64d08ae2e71a04dc} 
+\index{entity@{entity}!draw@{draw}}
+\index{draw@{draw}!entity@{entity}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void entity\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Target \&}]{target }\end{DoxyParamCaption})}
+
+
+
+Draws the entity on the given target. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & Render target (e.\+g., window). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classentity_ae76dfa9ed69590b321e057d34f8e4b15}\label{classentity_ae76dfa9ed69590b321e057d34f8e4b15} 
+\index{entity@{entity}!get\_pos@{get\_pos}}
+\index{get\_pos@{get\_pos}!entity@{entity}}
+\doxysubsubsection{\texorpdfstring{get\_pos()}{get\_pos()}}
+{\footnotesize\ttfamily sf\+::\+Vector2f entity\+::get\+\_\+pos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the current position of the entity. 
+
+\begin{DoxyReturn}{Returns}
+Position as sf\+::\+Vector2f. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+entity.\+h\item 
+entity.\+cpp\end{DoxyCompactItemize}

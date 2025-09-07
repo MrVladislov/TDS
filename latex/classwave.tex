@@ -1,0 +1,135 @@
+\doxysection{wave Class Reference}
+\hypertarget{classwave}{}\label{classwave}\index{wave@{wave}}
+
+
+Represents a wave of enemies.  
+
+
+
+
+{\ttfamily \#include $<$entity.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classwave_a5635bef32146538182d7487e70b17f3a}{wave}} (std\+::vector$<$ sf\+::\+Vector2f $>$ path, int \mbox{\hyperlink{classwave}{wave}}=0)
+\begin{DoxyCompactList}\small\item\em Constructs a wave with a given path. \end{DoxyCompactList}\item 
+\Hypertarget{classwave_a369b2c17cf9130f6c0a627cb5a000e4c}\label{classwave_a369b2c17cf9130f6c0a627cb5a000e4c} 
+void {\bfseries next\+\_\+wave} ()
+\begin{DoxyCompactList}\small\item\em Prepares the next wave of enemies. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{classenemy}{enemy}} $>$ \& \mbox{\hyperlink{classwave_ace4ce2e2544fcc2cd199f73934394070}{get\+\_\+enemies}} ()
+\begin{DoxyCompactList}\small\item\em Returns a reference to the current enemies. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classwave_ab3ceca78f852a281a089683153fb5071}{spawn\+\_\+enemies}} (float current\+\_\+time)
+\begin{DoxyCompactList}\small\item\em Spawns enemies based on time and wave logic. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classwave_a1c8f7c7435b315b204cea3791331003a}{get\+Wave}} () const
+\begin{DoxyCompactList}\small\item\em Gets the current wave number. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classwave_aea04212c6336964225a6073c1b7114ba}{get\+Wave\+Long}} () const
+\begin{DoxyCompactList}\small\item\em Gets the estimated duration of the wave. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwave_a30d620736a9430976b4f417e33a743a9}{draw}} (sf\+::\+Render\+Target \&target, float deltaT)
+\begin{DoxyCompactList}\small\item\em Draws all enemies in the wave. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a wave of enemies. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classwave_a5635bef32146538182d7487e70b17f3a}\label{classwave_a5635bef32146538182d7487e70b17f3a} 
+\index{wave@{wave}!wave@{wave}}
+\index{wave@{wave}!wave@{wave}}
+\doxysubsubsection{\texorpdfstring{wave()}{wave()}}
+{\footnotesize\ttfamily wave\+::wave (\begin{DoxyParamCaption}\item[{std\+::vector$<$ sf\+::\+Vector2f $>$}]{path,  }\item[{int}]{wave = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Constructs a wave with a given path. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Enemy path. \\
+\hline
+{\em wave} & Initial wave number (default 0). \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classwave_a30d620736a9430976b4f417e33a743a9}\label{classwave_a30d620736a9430976b4f417e33a743a9} 
+\index{wave@{wave}!draw@{draw}}
+\index{draw@{draw}!wave@{wave}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void wave\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Target \&}]{target,  }\item[{float}]{deltaT }\end{DoxyParamCaption})}
+
+
+
+Draws all enemies in the wave. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & Render target (e.\+g., window). \\
+\hline
+{\em deltaT} & Time elapsed since last frame. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classwave_ace4ce2e2544fcc2cd199f73934394070}\label{classwave_ace4ce2e2544fcc2cd199f73934394070} 
+\index{wave@{wave}!get\_enemies@{get\_enemies}}
+\index{get\_enemies@{get\_enemies}!wave@{wave}}
+\doxysubsubsection{\texorpdfstring{get\_enemies()}{get\_enemies()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{classenemy}{enemy}} $>$ \& wave\+::get\+\_\+enemies (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns a reference to the current enemies. 
+
+\begin{DoxyReturn}{Returns}
+Reference to vector of enemies. 
+\end{DoxyReturn}
+\Hypertarget{classwave_a1c8f7c7435b315b204cea3791331003a}\label{classwave_a1c8f7c7435b315b204cea3791331003a} 
+\index{wave@{wave}!getWave@{getWave}}
+\index{getWave@{getWave}!wave@{wave}}
+\doxysubsubsection{\texorpdfstring{getWave()}{getWave()}}
+{\footnotesize\ttfamily int wave\+::get\+Wave (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the current wave number. 
+
+\begin{DoxyReturn}{Returns}
+Wave number. 
+\end{DoxyReturn}
+\Hypertarget{classwave_aea04212c6336964225a6073c1b7114ba}\label{classwave_aea04212c6336964225a6073c1b7114ba} 
+\index{wave@{wave}!getWaveLong@{getWaveLong}}
+\index{getWaveLong@{getWaveLong}!wave@{wave}}
+\doxysubsubsection{\texorpdfstring{getWaveLong()}{getWaveLong()}}
+{\footnotesize\ttfamily float wave\+::get\+Wave\+Long (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the estimated duration of the wave. 
+
+\begin{DoxyReturn}{Returns}
+Duration in seconds. 
+\end{DoxyReturn}
+\Hypertarget{classwave_ab3ceca78f852a281a089683153fb5071}\label{classwave_ab3ceca78f852a281a089683153fb5071} 
+\index{wave@{wave}!spawn\_enemies@{spawn\_enemies}}
+\index{spawn\_enemies@{spawn\_enemies}!wave@{wave}}
+\doxysubsubsection{\texorpdfstring{spawn\_enemies()}{spawn\_enemies()}}
+{\footnotesize\ttfamily bool wave\+::spawn\+\_\+enemies (\begin{DoxyParamCaption}\item[{float}]{current\+\_\+time }\end{DoxyParamCaption})}
+
+
+
+Spawns enemies based on time and wave logic. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em current\+\_\+time} & Current time in seconds. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if wave is complete (all enemies spawned), false otherwise. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+entity.\+h\item 
+entity.\+cpp\end{DoxyCompactItemize}
