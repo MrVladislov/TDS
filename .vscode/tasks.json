@@ -24,7 +24,9 @@
                 "-lvorbisenc",
                 "-lvorbisfile",
                 "-lvorbis",
-                "-logg"
+                "-logg",
+                "-static-libstdc++",
+                "-static-libgcc",
             ],
             "options": {
                 "cwd": "${workspaceFolder}"

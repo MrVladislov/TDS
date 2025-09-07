@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 #include "entity.h"
-
+#pragma once
 class Button{
 private:
     sf::RectangleShape shape;
@@ -58,6 +58,8 @@ public:
     sf::Vector2f getSize() const;
     void draw(sf::RenderTarget &target);
     std::tuple<sf::Vector2f,sf::Vector2i,TileType> PlaceTower(sf::Window &target);
+    std::vector <std::vector<tile>> getTiles();
+    std::vector<std::vector<int>> get_TilesType() const;
 };
 class menu{
 private:
@@ -68,9 +70,9 @@ private:
     int selected_button=-1;
     bool mouse_clicked=false;
 public:
-    menu(int balance,int health);
+    menu(int balance,int health,int waves=0);
     void draw(sf::RenderTarget &target);
-    void changeStats(int balance,int health);
+    void changeStats(int balance,int health,int waves);
     void TowerBuy(sf::Window &target);
     int getSelectedTower();
 };
@@ -85,14 +87,19 @@ private:
     wave waves;
     std::vector <sf::Texture> t_textures;
     std::vector <std::vector<int>> placed_towers;
+    float next_wave;
+    int numbers_of_tower;
+    int wave_n;
 public:
-    GameUI(int width, int height, std::string title, int balance, int health,int tntexture=3,sf::Vector2i map_size=sf::Vector2i(11,11));
+    GameUI(int width, int height, std::string title, int balance, int health,std::vector <sf::Vector2f> path,int tntexture=3,
+        sf::Vector2i map_size=sf::Vector2i(11,11));
     void pin_object();
-    void render(int Balance,int Health);
+    void render(int &Balance,int &Health,float deltaT);
     bool isOpen() const;
     bool pollEvent();
     void close();
     bool isButtonPressed(sf::Keyboard::Scancode button_index) const;
     float restartClock();
+    tuple <vector<enemy>&,vector<tower>&> get_entities();
 };
 #endif 

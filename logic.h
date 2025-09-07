@@ -8,9 +8,10 @@
 
 #pragma once
 bool inrange(sf::Vector2f pos1, sf::Vector2f pos2, int range);
-void attack(vector <tower> towers, vector <enemy> enemies,float current_time,sf::Vector2f center, vector <sf::Vector2f> path);
-void sort(vector <enemy> &enemies, vector <sf::Vector2f> path,sf::Vector2f center);
-void sort_byy(vector <enemy> &enemies,float half);
-void sort_byx(vector <enemy> &enemies,float half);
+void attack(vector <tower> &towers, vector <enemy> &enemies,float current_time,sf::Vector2f center, vector <sf::Vector2f> path,
+int &balance);
+void sort(vector <enemy*> &enemies, vector <sf::Vector2f> path,sf::Vector2f center);
+void sort_byy(vector <enemy*> &enemies,float half);
+void sort_byx(vector <enemy*> &enemies,float half);
 
 #endif

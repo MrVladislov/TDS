@@ -1,7 +1,7 @@
 #include "entity.h"
 
 float sigmoidF(int x){
-    return 1/(1+exp(2*x-10));
+    return 0.8/(1+exp(x/2-10))+0.2;
 }
 std::string enemyTypeToString(enemy_type type) {
     switch(type) {
@@ -19,6 +19,7 @@ std::string towerTypeToString(tower_type type) {
         default: {return "unknown";break;}
     }
 };
+//speed, health
 std::tuple<int,int> enemyTypeToStats(enemy_type type) {
     std::tuple<int,int> stats;
     switch(type) {
@@ -31,7 +32,7 @@ std::tuple<int,int> enemyTypeToStats(enemy_type type) {
             break;
         }
         case king_slime: {
-            stats=std::make_tuple(5,200);
+            stats=std::make_tuple(5,300);
             break;
         }
         default: {
@@ -41,24 +42,32 @@ std::tuple<int,int> enemyTypeToStats(enemy_type type) {
     }
     return stats;
 };
-//damege, attack_speed, range, damage_area
-std::tuple<int,double,int,int> towerTypeToStats(tower_type type) {
-    std::tuple<int,double,int,int> stats;
+int getEnemyCost(int typ){
+    constexpr int EnemyPrices[] = { 10, 10, 50 };
+    return EnemyPrices[typ];
+};
+int getEnemyHealth(enemy_type typ){
+    constexpr int EnemyHealth[] = { 50, 30, 200 };
+    return EnemyHealth[typ];
+};
+//damege, attack_speed, range, damage_area,cost
+std::tuple<int,double,int,int,int> towerTypeToStats(tower_type type) {
+    std::tuple<int,double,int,int,int> stats;
     switch(type) {
         case archer: {
-            stats=std::make_tuple(10,0.5,100,1);
+            stats=std::make_tuple(5,1.25,100,1,100);
             break;
         }
         case mage: {
-            stats=std::make_tuple(15,0.7,150,10);
+            stats=std::make_tuple(5,3,150,64,200);
             break;
         }
         case sniper: {
-            stats=std::make_tuple(50,3.0,300,1);
+            stats=std::make_tuple(25,10.0,300,1,300);
             break;
         }
         default: {
-            stats=std::make_tuple(0,0.0,0,0);
+            stats=std::make_tuple(0,0.0,0,0,0);
             break;
         }
     }
@@ -67,28 +76,42 @@ std::tuple<int,double,int,int> towerTypeToStats(tower_type type) {
 };
 
 entity::entity(sf::Texture &textur)
-:texture(textur),shape(texture){
-};
+:shape(textur){};
+
 void entity::draw(sf::RenderTarget &target){
     target.draw(shape);
     //cout<<"WTF?";
+    //cout<<"Yes "<<shape.getPosition().x<<" "<<shape.getPosition().y<<" "<<shape.getTexture().getSize().x<<" "<<shape.getTexture().getSize().x<<endl;
 };
-enemy::enemy(enemy_type typ,sf::Texture textur)
+bool enemy::draw(sf::RenderTarget &target){
+    if(health<=0)return true;
+    else{
+        entity::draw(target);
+        target.draw(health_bar);
+        return false;
+    }
+}
+enemy::enemy(enemy_type typ,sf::Texture &textur)
 :entity(textur){
-    texture=textur;
-    shape.setTexture(texture);
+    shape.setTexture(textur);
     type=typ;
     auto [speed,health]=enemyTypeToStats(type);
     this->speed=speed;
     this->health=health;
     shape.setOrigin(shape.getLocalBounds().getCenter());
+    health_bar.setFillColor(sf::Color::Red);
+    health_bar.setSize({40.f,10.f});
+    health_bar.setOutlineColor(sf::Color::Black);
+    health_bar.setOutlineThickness(1.f);
+    health_bar.setOrigin({20.f,5.f});
+    buff=1;
 };
-void enemy::move(double delta_time,vector <sf::Vector2f> path){
+void enemy::move(float delta_time,vector <sf::Vector2f> path){
     sf::Vector2f position;
     float step=0.0f;
     position=shape.getPosition();
     for(int i=0;i<path.size()-1 && delta_time>0;i++){
-        step= speed*delta_time;
+        step= speed*delta_time*buff;
         //x_decrease
         if(path[i].x-path[i+1].x>1){
             if(abs(position.y-path[i].y)<0.0001){
@@ -128,7 +151,7 @@ void enemy::move(double delta_time,vector <sf::Vector2f> path){
                 }
             }
         }
-        //x_increase
+        //y_increase
         else if(path[i].y-path[i+1].y<-1){
             if(abs(position.x-path[i].x)<0.0001){
                 if(position.y+step>path[i+1].y){
@@ -143,25 +166,22 @@ void enemy::move(double delta_time,vector <sf::Vector2f> path){
         }
     }
     shape.setPosition(position);
-};
-sf::Vector2f enemy::get_pos(){
-    return shape.getPosition();
+    health_bar.setSize({40.f*(float(health)/float(getEnemyHealth(type))),10.f});
+    health_bar.setPosition({position.x,position.y-40.f});
 };
 bool enemy::damaged(int damage){
     health-=damage;
-    if(health<0){
-        health=0;
+    if(health<=0){
         return true;
     }
     else return false;
 };
-wave::wave(int wave){
+wave::wave(std::vector <sf::Vector2f> path,int wave){
     last_spawn_time=0.0f;
     wave_number=wave;
+    this->path=path;
     enemy_textures.clear();
     enemy_textures.reserve(3);
-    enemies.clear();
-    enemies.reserve(wave_number/2+wave_number/5+wave_number*2);
     for(int i=0;i<3;i++){
         sf::Texture texture;
         std::string filename = "assets/" + enemyTypeToString(static_cast<enemy_type>(i)) + ".png";
@@ -179,7 +199,7 @@ void wave::next_wave(){
     int king_slime_count=wave_number/5;
     int enemy_count=red_slime_count+blue_slime_count+king_slime_count;
     new_enemies.reserve(enemy_count);
-    for(int i=0;i<red_slime/2;i++){
+    for(int i=0;i<red_slime_count/2;i++){
         enemy new_enemy(red_slime,enemy_textures[red_slime]);
         new_enemies.push_back(new_enemy);
     }
@@ -187,8 +207,8 @@ void wave::next_wave(){
         enemy new_enemy(blue_slime,enemy_textures[blue_slime]);
         new_enemies.push_back(new_enemy);
     }
-    for(int i=0;i<red_slime/2;i++){
-        enemy new_enemy(king_slime,enemy_textures[king_slime]);
+    for(int i=0;i<red_slime_count/2;i++){
+        enemy new_enemy(red_slime,enemy_textures[red_slime]);
         new_enemies.push_back(new_enemy);
     }
     for(int i=0;i<king_slime_count;i++){
@@ -196,32 +216,50 @@ void wave::next_wave(){
         new_enemies.push_back(new_enemy);
     }
 };
-vector <enemy> wave::get_enemies() const{
+vector <enemy> &wave::get_enemies(){
     return enemies;
 };
 bool wave::spawn_enemies(float current_time){
-    last_spawn_time-=current_time;
     if(new_enemies.size()>0){
+        last_spawn_time-=current_time;
         if(last_spawn_time<=0.0f){
+            new_enemies[0].set_pos(path[0]);
             enemies.push_back(new_enemies[0]);
             new_enemies.erase(new_enemies.begin());
-            last_spawn_time=2.0f/sigmoidF(wave_number);
+            last_spawn_time+=5.0f*sigmoidF(wave_number);
+            //cout<<"Spawned"<<endl;
         }
         return false;
     }
     else return true;
 };
-tower::tower(tower_type typ,sf::Texture textur,sf::Vector2f position)
+float wave::getWaveLong() const{
+    return (wave_number/2+wave_number/5+wave_number*2)*5.0f*sigmoidF(wave_number);
+};
+int wave::getWave() const{
+    return wave_number;
+};
+void wave::draw(sf::RenderTarget &target,float deltaT){
+    for(int i=0;i<enemies.size();){
+        enemies[i].move(deltaT,path);
+        if(enemies[i].draw(target)){
+            enemies.erase(enemies.begin()+i);
+        }
+        else ++i;
+    }
+};
+tower::tower(tower_type typ,sf::Texture &textur,sf::Vector2f position)
 :entity(textur){
     this->type=typ;
-    texture=textur;
-    shape.setTexture(texture);
-    auto [damage,attack_speed,range,damage_area]=towerTypeToStats(type);
+    shape.setTexture(textur);
+    auto [damage,attack_speed,range,damage_area,cost]=towerTypeToStats(type);
     this->damage=damage;
     this->attack_speed=attack_speed;
     this->range=range;
     this->damage_area=damage_area;
+    this->cost=cost;
     last_attack=0.0f;
+    shape.setOrigin(sf::Vector2f(16.f,16.f));
     shape.setPosition(position);
     //cout<<"Tower "<<towerTypeToString(type)<<" "<<position.x<<" "<<position.y<<endl;
 };
@@ -229,11 +267,11 @@ float tower::get_lastattack(float deltaT){
     last_attack-=deltaT;
     return last_attack;
 };
+void tower::set_lastattack(float next_attack){
+    last_attack+=next_attack;
+};
 int tower::get_damage() const{
     return damage;
-};
-sf::Vector2f tower::get_pos() const{
-    return shape.getPosition();
 };
 int tower::get_range() const{
     return range;
@@ -241,4 +279,29 @@ int tower::get_range() const{
 double tower::get_attackspeed() const{
     return attack_speed;
 };
+int tower::getCost() const{
+    return cost;
+};
+int getTowerCost(int typ){
+    constexpr int towerPrices[] = { 200, 500, 1000 };
+    return towerPrices[typ];
+};
+void enemy::set_pos(sf::Vector2f spawn_point){
+    shape.setPosition(spawn_point);
+};
+sf::Vector2f entity::get_pos() const{
+    return shape.getPosition();
+};
 
+enemy_type enemy::get_type() const{
+    return type;
+};
+tower_type tower::get_type() const{
+    return type;
+};
+int tower::get_damagearea() const{
+    return damage_area;
+};
+void enemy::Buff(double buff){
+    this->buff=buff;
+};
