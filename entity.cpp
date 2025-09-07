@@ -47,11 +47,11 @@ int getEnemyCost(int typ){
     return EnemyPrices[typ];
 };
 int getEnemyHealth(enemy_type typ){
-    constexpr int EnemyHealth[] = { 50, 30, 200 };
+    constexpr int EnemyHealth[] = { 50, 30, 300 };
     return EnemyHealth[typ];
 };
 double getTowerAttackSpeed(tower_type typ){
-    constexpr double TowerAS[] = { 1.25, 3, 10 };
+    constexpr double TowerAS[] = { 1.3, 3, 10 };
     return TowerAS[typ];
 };
 //damege, attack_speed, range, damage_area,cost
@@ -59,7 +59,7 @@ std::tuple<int,double,int,int,int> towerTypeToStats(tower_type type) {
     std::tuple<int,double,int,int,int> stats;
     switch(type) {
         case archer: {
-            stats=std::make_tuple(5,1.25,100,1,100);
+            stats=std::make_tuple(10,1.3,125,1,100);
             break;
         }
         case mage: {
