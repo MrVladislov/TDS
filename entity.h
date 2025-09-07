@@ -92,4 +92,5 @@ int getTowerCost(int typ);
 float sigmoidF(int x);
 int getEnemyCost(int typ);
 int getEnemyHealth(enemy_type typ);
+double getTowerAttackSpeed(tower_type typ);
 #endif

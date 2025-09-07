@@ -24,7 +24,7 @@ int &balance){
 			}
 			if(enemy_inrange.size()>0)
             {
-                towers[i].set_lastattack();
+                towers[i].set_lastattack(getTowerAttackSpeed(towers[i].get_type()));
                 sort(enemy_inrange,path,center);
                 int damage_area=towers[i].get_damagearea();
                 vector <enemy*> enemies_in_area;
