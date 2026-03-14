@@ -1,8 +1,6 @@
 #include <vector>
 #include <iostream>
 #include <string> 
-#include "visual.h"
-#include "entity.h"
 #include "logic.h"
 #include <SFML/Graphics.hpp>
 using namespace std;
@@ -21,6 +19,7 @@ int main() {
         health=10;
         cout<<"Speed:";
         cin>>speed;
+        //speed=10;
         try {
             string game_name = "TDS";
             GameUI game(1280, 720, game_name, balance, health,path);
@@ -34,7 +33,7 @@ int main() {
                     game.close();
                 }
                 auto[enemies,towers]=game.get_entities();
-                if(enemies.size()>0)attack(towers,enemies,time,path[path.size()-1],path,balance);
+                if(enemies.size()>0)attack(towers,enemies,time,path[path.size()-1],path,balance,game.get_target());
                 //cout<<game.restartClock()<<endl;
                 if(health<=0)break;
             }

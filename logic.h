@@ -1,12 +1,13 @@
 #ifndef LOGIC_H
 #define LOGIC_H
-#include "entity.h"
 #include <cmath>
 #include "visual.h"
 #include <vector>
 #include <SFML/System.hpp>
 
 #pragma once
+float getLong(sf::Vector2f p1,sf::Vector2f p2);
+sf::Angle getAngle(sf::Vector2f p1,sf::Vector2f p2,float longe);
 /**
  * @brief Check if pos2 is within a given range from pos1.
  * @param pos1 First position (center point).
@@ -25,7 +26,7 @@ bool inrange(sf::Vector2f pos1, sf::Vector2f pos2, int range);
  * @param balance Reference to player's current balance (updated when enemies are died after attack).
  */
 void attack(vector <tower> &towers, vector <enemy> &enemies,float current_time,sf::Vector2f center, vector <sf::Vector2f> path,
-int &balance);
+int &balance,sf::RenderWindow &target);
 /**
  * @brief Sort enemies based on their position along the path.
  * @param enemies Vector of enemy pointers to be sorted (modified only order).
